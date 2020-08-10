@@ -1,7 +1,7 @@
 version: "3"
 services:
   gradle:
-    # Run pre-built maven image from docker library
+    # Run pre-built gradle image from docker library
     image: gradle
     volumes:
       - $PWD:/home/gradle/project
