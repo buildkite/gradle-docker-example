@@ -1,0 +1,12 @@
+buildCache {
+    local {
+        enabled = false
+    }
+
+    def cacheUrl = System.getenv('BUILD_CACHE_URL') ?: System.properties.get('buildCacheUrl')
+    def username = System.getenv('BUILD_CACHE_USERNAME') ?: System.properties.get('buildCacheUsername')
+    def password = System.getenv('BUILD_CACHE_PASSWORD') ?: System.properties.get('buildCachePassword')
+    remote(HttpBuildCache) {
+        enabled = false
+    }
+}

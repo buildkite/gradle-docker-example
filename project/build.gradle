@@ -1,0 +1,81 @@
+import org.gradle.util.GradleVersion
+
+def missingJavaLibrarySupport = GradleVersion.current() < GradleVersion.version('3.4')
+
+
+            if(missingJavaLibrarySupport) {
+                apply plugin: 'java'
+            } else {
+                apply plugin: 'java-library'
+            }
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+repositories {
+
+            maven {
+                name 'MAVEN_CENTRAL'
+                url 'https://repo.maven.apache.org/maven2/'
+            }
+
+}
+
+
+if (missingJavaLibrarySupport) {
+    configurations {
+        api
+        implementation
+        testImplementation
+        compile.extendsFrom api
+        compile.extendsFrom implementation
+        testCompile.extendsFrom testImplementation
+    }
+}
+
+
+    dependencies {
+        api 'commons-lang:commons-lang:2.5'
+    api 'commons-httpclient:commons-httpclient:3.0'
+    api 'commons-codec:commons-codec:1.2'
+    api 'org.slf4j:jcl-over-slf4j:1.7.10'
+        implementation 'com.googlecode:reflectasm:1.01'
+        testImplementation 'junit:junit:4.12'
+
+
+    }
+
+
+
+String compilerMemory = getProperty('compilerMemory')
+String testRunnerMemory = getProperty('testRunnerMemory')
+int testForkEvery = getProperty('testForkEvery') as Integer
+
+tasks.withType(JavaCompile) {
+    options.fork = true
+    options.incremental = true
+    options.forkOptions.memoryInitialSize = compilerMemory
+    options.forkOptions.memoryMaximumSize = compilerMemory
+}
+
+tasks.withType(Test) {
+
+    minHeapSize = testRunnerMemory
+    maxHeapSize = testRunnerMemory
+    maxParallelForks = 1
+    forkEvery = testForkEvery
+
+    if (!JavaVersion.current().java8Compatible) {
+        jvmArgs '-XX:MaxPermSize=512m'
+    }
+    jvmArgs '-XX:+HeapDumpOnOutOfMemoryError'
+}
+
+task dependencyReport(type: DependencyReportTask) {
+    outputs.upToDateWhen { false }
+    outputFile = new File(buildDir, "dependencies.txt")
+}
+
+
+group = "org.gradle.test.performance"
+version = "2.0"

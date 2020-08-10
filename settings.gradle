@@ -1,0 +1,3 @@
+apply from: "gradle/buildCache.gradle"
+
+include("project")

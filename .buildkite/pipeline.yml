@@ -1,0 +1,8 @@
+steps:
+  - label: ":gradle: :package:"
+    command: "./gradlew --build-cache clean assemble"
+    artifact_paths: "project/build/libs/*.jar"
+    plugins:
+      - docker-compose#v3.5.0:
+          run: gradle
+          config: .buildkite/docker-compose.yml
