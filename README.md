@@ -1,6 +1,6 @@
 # Gradle Buildkite docker-compose example
 
-This example uses [Gradle](https://gradle.org/) to run a Gradle build.
+This example uses [Gradle](https://gradle.org/) to build a Java project.
 
 Project example was taken from [Gradle/db-example-large-multi-project](https://github.com/gradle/db-example-large-multi-project).
 
