@@ -1,8 +1,7 @@
-version: "3"
 services:
   gradle:
-    # Run pre-built gradle image from docker library
-    image: gradle
+    image: gradle:7.6-jdk8
     volumes:
-      - $PWD:/home/gradle/project
+      - ../:/home/gradle/project
     working_dir: /home/gradle/project
+    command: gradle build
