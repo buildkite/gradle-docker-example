@@ -1,15 +1,38 @@
 # Gradle Buildkite docker-compose example
+[![Build status](https://badge.buildkite.com/a0977fb3a7441cbabcab56a5e92d045a5110198f1ec6007668.svg?branch=main)](https://buildkite.com/buildkite/gradle-docker-example)
+[![Add to Buildkite](https://img.shields.io/badge/Add%20to%20Buildkite-14CC80)](https://buildkite.com/new)
 
-This example uses [Gradle](https://gradle.org/) to build a Java project.
+This repository is an example [Buildkite](https://buildkite.com/) pipeline for building and testing a multi-project Java application using [Gradle](https://gradle.org/) and the [Docker Compose Buildkite Plugin](https://github.com/buildkite-plugins/docker-compose-buildkite-plugin).
 
-Project example was taken from [Gradle/db-example-large-multi-project](https://github.com/gradle/db-example-large-multi-project).
+👉 **See this example in action:** [buildkite.com/buildkite/gradle-docker-example](https://buildkite.com/buildkite/gradle-docker-example)
 
-This example also works on the Buildkite Agent using [the Docker Compose plugin](https://github.com/buildkite-plugins/docker-compose-buildkite-plugin) to run Gradle in [the Gradle Docker container](https://hub.docker.com/_/gradle), which works great on the [Elastic CI Stack for AWS](https://github.com/buildkite/elastic-ci-stack-for-aws).
+See the full [Getting Started Guide](https://buildkite.com/docs/guides/getting-started) for step-by-step instructions on how to get this running, or try it yourself:
 
 [![Add to Buildkite](https://buildkite.com/button.svg)](https://buildkite.com/new)
 
-![Gradle build](https://user-images.githubusercontent.com/585588/89701317-be475100-d974-11ea-87e2-149ac676817c.png)
-![Gradle artifacts](https://user-images.githubusercontent.com/585588/89701316-bab3ca00-d974-11ea-9522-9be86a06b35e.png)
+<a href="https://buildkite.com/buildkite/gradle-docker-example/builds/latest?branch=main">
+  <img width="2400" alt="Screenshot of example pipeline build page" src=".buildkite/screenshot.png" />
+</a>
+
+## How it works
+
+This example:
+- Uses Gradle to build and test a multi-project Java application
+- Runs inside the official [Gradle Docker image](https://hub.docker.com/_/gradle) via Docker Compose
+- Uploads build artifacts to Buildkite
+- Works with Gradle 7.6+
+- Plays nicely with the [Elastic CI Stack for AWS](https://github.com/buildkite/elastic-ci-stack-for-aws)
+
+The Java project comes from [Gradle's db-example-large-multi-project](https://github.com/gradle/db-example-large-multi-project).
+
+---
+
+## Requirements
+
+- A [Buildkite agent](https://buildkite.com/docs/agent)
+- No manual setup required — Gradle, Java, Docker, and Docker Compose are handled in the example pipeline
+
+---
 
 ## License
 

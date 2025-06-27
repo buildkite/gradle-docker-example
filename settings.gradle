@@ -1,3 +1,25 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id 'com.gradle.enterprise' version '3.12.1'
+}
+
+gradleEnterprise {
+    buildScan {
+        def geUrl = System.getenv('GE_URL')
+        if (geUrl) {
+            server = geUrl
+        }
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+    }
+}
+
+
 apply from: "gradle/buildCache.gradle"
 
 include("project")
