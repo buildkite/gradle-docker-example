@@ -1,5 +1,12 @@
-name: "Gradle Example"
-description: "An example repository you can use as a test project with Buildkite"
+name: "Gradle Docker Example"
+description: "An example pipeline that builds and tests a Java application with Gradle inside Docker using Buildkite."
+emoji: ":gradle:"
+color: "#EFF9FF"
+languages:
+  - "Java"
+  - "Gradle"
+  - "Docker"
+  - "YAML"
 steps:
-  - command: "buildkite-agent pipeline upload"
-    label: ":pipeline:"
+  - label: ":pipeline:"
+    command: "buildkite-agent pipeline upload"
