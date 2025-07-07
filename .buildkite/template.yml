@@ -4,9 +4,7 @@ emoji: ":gradle:"
 color: "#EFF9FF"
 languages:
   - "Java"
-  - "Gradle"
   - "Docker"
-  - "YAML"
 steps:
   - label: ":pipeline:"
     command: "buildkite-agent pipeline upload"
